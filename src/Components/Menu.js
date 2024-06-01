@@ -1,12 +1,21 @@
 import React from 'react'
 import { NavLink} from 'react-router-dom'
-// import {useState} from 'react';
-// import HamburgerIcon from '../images/icon-hamburger.svg'
-// import {useState, useEffect, useRef} from 'react';
 import ArrowIcon from '../images/icon-arrow-dark.svg'
 import {useState, useRef} from 'react' 
 
 function Menu(props) {
+
+  const [width, setWidth] = React.useState(window.innerWidth);
+  const breakpoint = 900;
+  React.useEffect(() => {
+    const handleResizeWindow = () => setWidth(window.innerWidth);
+    // subscribe to window resize event "onComponentDidMount"
+    window.addEventListener("resize", handleResizeWindow);
+    return () => {
+      // unsubscribe "onComponentDestroy"
+      window.removeEventListener("resize", handleResizeWindow);
+    };
+  }, []);
 
 
   const [show, setShow] = useState(null);
@@ -30,8 +39,13 @@ function Menu(props) {
 
 
   return (
-
-     <div   className={props.show ? 'inactive' : 'mobile-menu active'}  > 
+    
+    // {width > breakpoint && (
+                
+      
+      
+    
+     <div   className={width > breakpoint || props.show ? 'inactive' : 'mobile-menu active'}  > 
 
     <ul className="nav-mbl-menu">
                 <li className="product-mbl">
@@ -39,8 +53,7 @@ function Menu(props) {
                 <NavLink to= "/" className= "link-mbl-title"  onClick={() => handleClick(0)} > Product <img src={ArrowIcon}  alt="" className={show === 0 ? ` rotate` : `arrow-menu-2`} /> </NavLink>
 
                     <div   className={`sub-menu-div ${show === 0 ? "open" : ""}`} ref={(el) => (contentRef.current[0] = el)} >
-                    {/* <p className="accordion__number">01</p> */}
-                    {/* <Routes location="/product" > */}
+                    
 
                     <NavLink to="/overview" className="link-mbl"   > Overview </NavLink>
                     <NavLink to="/pricing" className="link-mbl" > Pricing </NavLink>
@@ -86,5 +99,6 @@ function Menu(props) {
     
   )
 }
+
 
 export default Menu

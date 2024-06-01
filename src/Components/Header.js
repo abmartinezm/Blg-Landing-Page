@@ -8,7 +8,7 @@ import { useState } from "react";
 
 function Header(props) {
   const [width, setWidth] = React.useState(window.innerWidth);
-  const breakpoint = 700;
+  const breakpoint = 900;
   React.useEffect(() => {
     const handleResizeWindow = () => setWidth(window.innerWidth);
     // subscribe to window resize event "onComponentDidMount"
@@ -18,11 +18,7 @@ function Header(props) {
       window.removeEventListener("resize", handleResizeWindow);
     };
   }, []);
-  // if (width > breakpoint) {
 
-  // }
-
-  // const isDesktopResolution =  window.screen.width > 600
 
   const [visible, setVisible] = useState(false);
 

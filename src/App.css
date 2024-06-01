@@ -56,13 +56,13 @@
 }
 
 .sub-menu-div-mbl,.sub-menu-div-mbl2, .sub-menu-div-mbl3{
-  width: 90%;
+  width: 15vw;
   height:auto;
   display: flex;
 
   flex-wrap: wrap;
   position: absolute;
-  top: 4rem;
+  top: 6rem;
   /* align-items: flex-end; */
   justify-content:center;
   border-radius: 10px;
@@ -593,6 +593,10 @@
   width: 20px;
   scale: .3;
   transform: rotate(180deg);
+}
+
+.inactive{
+  display: none;
 }
 
 
